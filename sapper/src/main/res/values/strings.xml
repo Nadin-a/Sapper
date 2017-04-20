@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Sapper</string>
+    <string name="rul">
+        Число в ячейке показывает, сколько мин скрыто вокруг данной ячейки.</string>
+    <string name="rul2">
+        Это число поможет понять вам, где находятся безопасные ячейки, а где находятся бомбы.</string>
+    <string name="rul3">
+Если рядом с открытой ячейкой есть пустая ячейка, то она откроется автоматически.
+Если вы открыли ячейку с миной, то игра проиграна.</string>
+    <string name="rul4">
+Что бы пометить ячейку, в которой находится бомба, сделайте долгое нажатие.
+Игра продолжается до тех пор, пока вы не откроете все не заминированные ячейки.</string>
+
+    <string name="min">5X5</string>
+    <string name="max">8X8</string>
+    <string name="info">Информация</string>
+    <string name="music">Музыка</string>
+    <string name="win">YOU WIN</string>
+    <string name="back">Назад в меню</string>
+</resources>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="5dp" />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/main"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="5dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/min"
+        android:layout_margin="5dp"
+        android:layout_gravity="center"
+        android:id="@+id/min"
+        android:textSize="@dimen/spvalue30"
+        android:background="@drawable/gradient_button"
+        android:textColor="@drawable/button_text"
+        android:onClick="btnClick"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/max"
+        android:layout_margin="5dp"
+        android:background="@drawable/gradient_button"
+        android:layout_gravity="center"
+        android:id="@+id/max"
+        android:textSize="@dimen/spvalue30"
+        android:textColor="@drawable/button_text"
+        android:onClick="btnClick"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/info"
+        android:background="@drawable/gradient_button"
+        android:layout_gravity="center"
+        android:id="@+id/rules"
+        android:textSize="@dimen/spvalue30"
+        android:layout_margin="5dp"
+        android:textColor="@drawable/button_text"
+        android:onClick="btnClick"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/music"
+        android:background="@drawable/gradient_button"
+        android:layout_gravity="center"
+        android:id="@+id/music"
+        android:textSize="@dimen/spvalue30"
+        android:layout_margin="5dp"
+        android:textColor="@drawable/button_text"
+        android:onClick="btnClickPause"/>
+</LinearLayout>
