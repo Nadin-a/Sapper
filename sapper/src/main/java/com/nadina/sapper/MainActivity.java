@@ -33,71 +33,107 @@ import java.util.Random;
 
 /**
  * MIT License
-
- Copyright (c) 2017 Nadia
-
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
-
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
-
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
+ * <p>
+ * Copyright (c) 2017 Nadia
+ * <p>
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * <p>
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * <p>
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 @TargetApi(21)
 public class MainActivity extends AppCompatActivity implements SoundPool.OnLoadCompleteListener {
 
-    /** Начальное меню */
+    /**
+     * Начальное меню
+     */
     private LinearLayout StartMenu;
-    /** Главный Layout */
+    /**
+     * Главный Layout
+     */
     private LinearLayout mainLL;
-    /** Правила */
+    /**
+     * Правила
+     */
     private LinearLayout rul; //правила
-    /** Layout с победой */
+    /**
+     * Layout с победой
+     */
     private FrameLayout Victory;
-    /** Текст "победа" */
+    /**
+     * Текст "победа"
+     */
     private TextView victory_text;
-    /** Информация */
+    /**
+     * Информация
+     */
     private TextView info_view;
-    /** Grid Layout */
+    /**
+     * Grid Layout
+     */
     private GridLayout mainGL;
-    /** Анимация */
+    /**
+     * Анимация
+     */
     private AnimatorSet textSizeAnimatorSet;
 
 
     /**
      * Игровые значения
      */
-    /** Для проверки текущей версии АПИ */
+    /**
+     * Для проверки текущей версии АПИ
+     */
     int currentapiVersion;
-    /** Размер поля (определяется при нажатии кнопки) */
+    /**
+     * Размер поля (определяется при нажатии кнопки)
+     */
     private static int SIZE_FIELD = 0;
-    /** массив кнопок */
+    /**
+     * массив кнопок
+     */
     private Button[][] buttons;
-    /** Количество мин */
+    /**
+     * Количество мин
+     */
     public static int count_of_mines = 0;
-    /** Количество флагов */
+    /**
+     * Количество флагов
+     */
     public static int count_of_flags;
-    /** Очки победы */
+    /**
+     * Очки победы
+     */
     int count_of_victory = 0;
-    /** Признак окончания игры */
+    /**
+     * Признак окончания игры
+     */
     private boolean GM = false;
-    /** Состоялась ли победа */
+    /**
+     * Состоялась ли победа
+     */
     public boolean was_victory = false;
-    /** значения поля мин */
+    /**
+     * значения поля мин
+     */
     static Cell[][] map;
-    /** Пропуск заставки победы */
+    /**
+     * Пропуск заставки победы
+     */
     boolean skip = false;
 
 
@@ -110,11 +146,11 @@ public class MainActivity extends AppCompatActivity implements SoundPool.OnLoadC
     public static final int FIND_MINE = 1;
     public static final int NOT_MINE = 0;
     public static final int IS_MINE = -1;
-    public static final int COUNT_MINES_MIN = 2;
+    public static final int COUNT_MINES_MIN = 3;
     public static final int EXPLOSION = -2;
     public static final int COUNT_MINES_MAX = 5;
-    public static final int SIZE_OF_FIELD_MIN = 5;
-    public static final int SIZE_OF_FIELD_MAX = 8;
+    public static final int SIZE_OF_FIELD_MIN = 7;
+    public static final int SIZE_OF_FIELD_MAX = 9;
     public static final int SIZE_OF_CELL = 10;
 
 
@@ -134,13 +170,11 @@ public class MainActivity extends AppCompatActivity implements SoundPool.OnLoadC
     private boolean isMusicPause = false; // пауза для музыки
     boolean CheckMusic = false; // проверка включения музыки на фоне
 
-
     public static final int CELL_SIZE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         LayoutInflater inflater = this.getLayoutInflater();
         this.mainLL = (LinearLayout) inflater.inflate(R.layout.activity_main, null, false);
@@ -149,7 +183,6 @@ public class MainActivity extends AppCompatActivity implements SoundPool.OnLoadC
         this.Victory = (FrameLayout) inflater.inflate(R.layout.victory, null, false);
         this.rul = (LinearLayout) inflater.inflate(R.layout.rules, null, false);
         View view = inflater.inflate(R.layout.victory, Victory, false);
-
 
         //анимация для победы
         this.victory_text = (TextView) view.findViewById(R.id.win);
@@ -170,10 +203,6 @@ public class MainActivity extends AppCompatActivity implements SoundPool.OnLoadC
             }
         });
 
-
-        /**
-         * Проверка АПИ и звуки
-         */
         currentapiVersion = android.os.Build.VERSION.SDK_INT;
         if (currentapiVersion >= Build.VERSION_CODES.LOLLIPOP) {
 
@@ -195,7 +224,6 @@ public class MainActivity extends AppCompatActivity implements SoundPool.OnLoadC
 
 
         }
-
 
         lockScreenOrientation();
 
@@ -281,7 +309,6 @@ public class MainActivity extends AppCompatActivity implements SoundPool.OnLoadC
         info_view.setTextColor(Color.RED);
 
 
-
         this.mainGL = new GridLayout(this);
 
 
@@ -308,18 +335,17 @@ public class MainActivity extends AppCompatActivity implements SoundPool.OnLoadC
         this.mainGL.setLayoutParams(mainTLParams);
         this.mainGL.setOrientation(GridLayout.VERTICAL);
         this.mainGL.setBackgroundResource(R.drawable.background);
-        
 
 
         buttons = new Button[SIZE_FIELD][SIZE_FIELD];
         if (SIZE_FIELD == SIZE_OF_FIELD_MIN) {
             do {
                 map = generate();
-            } while (count_of_mines != COUNT_MINES_MIN); // Может быть только две мины
+            } while (count_of_mines != COUNT_MINES_MIN);
         } else {
             do {
                 map = generate();
-            } while (count_of_mines != COUNT_MINES_MAX); // Может быть только десять мин
+            } while (count_of_mines != COUNT_MINES_MAX);
         }
         count_of_flags = count_of_mines; // сколько мин, столько и флагов
 
@@ -579,8 +605,7 @@ public class MainActivity extends AppCompatActivity implements SoundPool.OnLoadC
                 setContentView(mainLL);
                 break;
             }
-            case R.id.rules:
-            {
+            case R.id.rules: {
                 setContentView(rul);
                 break;
             }
@@ -595,17 +620,17 @@ public class MainActivity extends AppCompatActivity implements SoundPool.OnLoadC
             mainLL.removeAllViews();
             setContentView(this.StartMenu);
         }
-        if(v.getId()==R.id.RulesId)
-        {
+        if (v.getId() == R.id.RulesId) {
             setContentView(this.StartMenu);
         }
     }
 
     /**
      * Проверка на конец игры
-     * @param map ячейка
+     *
+     * @param map   ячейка
      * @param press нажатие
-     * @param mine мина
+     * @param mine  мина
      */
     public void Input(Cell map, int press, int mine) {
         int result = 0;
@@ -639,8 +664,6 @@ public class MainActivity extends AppCompatActivity implements SoundPool.OnLoadC
 
 
         if (result_open == FIND_MINE) {
-            ///Делаем вид, что тыкнули в клетки
-            ///Сверху, снизу, справа и слева
             try {
                 recieveClickMAIN(x + CELL_SIZE, y, press, mine);
             } catch (java.lang.ArrayIndexOutOfBoundsException e) {
@@ -698,7 +721,6 @@ public class MainActivity extends AppCompatActivity implements SoundPool.OnLoadC
             setContentView(this.StartMenu);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

@@ -11,8 +11,8 @@
 Что бы пометить ячейку, в которой находится бомба, сделайте долгое нажатие.
 Игра продолжается до тех пор, пока вы не откроете все не заминированные ячейки.</string>
 
-    <string name="min">5X5</string>
-    <string name="max">8X8</string>
+    <string name="min">7X7</string>
+    <string name="max">9X9</string>
     <string name="info">Информация</string>
     <string name="music">Музыка</string>
     <string name="win">YOU WIN</string>
