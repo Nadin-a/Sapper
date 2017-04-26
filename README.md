@@ -1,2 +1,2 @@
 # Sapper
-Simple sapper for Android
+Simple sapper for Android. My first pet-project. 
